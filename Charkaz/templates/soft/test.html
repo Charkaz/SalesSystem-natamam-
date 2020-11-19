@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+	<script>
+		$(document).ready(function()
+		{
+			$('#ad').select2();
+		});
+	</script>
+</head>
+<body>
+	
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+	    <form class="col-md-4">
+	        <label>Select</label>
+	        <select style="width: 180px;" id="ad" class="form-control select2">
+	           <option selected>---------</option> 
+	           <option>Car</option> 
+	           <option>Bike</option> 
+	           <option>Scooter</option> 
+	           <option>Cycle</option> 
+	           <option>Horse</option> 
+	        </select>
+	    </form>
+ 	</div>
+</div>
+
+</body>
+</html>

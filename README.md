@@ -1,0 +1,1 @@
+# Natamam satis sistemi

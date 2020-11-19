@@ -1,0 +1,771 @@
+{% load static %}
+{% load myfilters %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'soft/img/apple-icon.png' %}"}>
+    <link rel="icon" type="image/png" href="{% static 'soft/img/favicon.png' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      Now UI Dashboard by Creative Tim
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- CSS Files -->
+    <link href="{% static 'soft/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'soft/css/now-ui-dashboard.css' %}" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{% static 'soft/demo/demo.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'colorpicker/la_color_picker.css' %}">
+      <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css>
+  
+    <link  href="{% static 'sales/dist/css/multiple-select.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'mehsulaxtar/styles/main.min.css' %}">
+    <script type="application/javascript" src="{% static 'mehsulaxtar/scripts/main.min.js' %}"></script>
+   
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+   -->
+    <script src="{% static 'satisajax/ajax.js' %}"></script>
+    <script src="{% static 'satisajax/select.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'satisajax/select.css' %}"  />
+
+ 
+ <script>
+      $(document).ready(function()
+      {
+        $('#ad').select2();
+      });
+    </script>
+  </head>
+  
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="orange">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+     <center>
+        <img src="{% static 'soft/img/logom.png' %}" style="width: 150px;" class="simple-text logo-mini text-center" >
+      </center>
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          <li >
+            <a href="{% url 'dashboard' %}">
+              <i class="now-ui-icons business_chart-bar-32"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li >
+            <a href="{% url 'insanlar' %}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>İnsanlar</p>
+            </a>
+          </li>
+          
+          <li>
+            <a href="./user.html">
+              <i class="now-ui-icons business_globe"></i>
+              <p>Şirkətlər</p>
+            </a>
+          </li>
+          <li class="">
+            <a href="{% url 'mehsullar' %}">
+              <i class="now-ui-icons design_app"></i>
+              <p>Məhsullar</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'satislar' %}">
+              <i class="now-ui-icons shopping_basket"></i>
+              <p>Satış</p>
+            </a>
+          </li>
+          <li>
+            <a href="./typography.html">
+              <i class="now-ui-icons business_money-coins"></i>
+              <p>Gəlirlər</p>
+            </a>
+          </li>
+          <li>
+            <a href="./typography.html">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Xərclər</p>
+            </a>
+          </li>
+         
+
+          <li>
+            <a href="./upgrade.html">
+              <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+              <p>Arxiv</p>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" id="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="#pablo">Mehsullar</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <form method="GET" action="{% url 'mehsullar' %}" >  
+              <div class="input-group no-border">
+                <input type="text" value="" name="axtar" class="form-control" placeholder="Axtar...">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#pablo">
+                  <i class="now-ui-icons media-2_sound-wave"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="now-ui-icons ui-1_simple-add"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Əlavə et</span>
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <button  type="button" class="dropdown-item" data-toggle="modal" data-target="#modalodenis" data-whatever="@mdo">Yeni Satis</button>
+                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#myModal">Open Large Modal</button>
+
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#pablo">
+                  <i class="now-ui-icons users_single-02"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="panel-header">
+       
+        <div class="header text-center">
+          {% include 'mesaj.html' %}
+          <h2 class="title">Satislar</h2>
+          <p class="category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p>
+        </div>
+      </div>
+   
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-lg-4">
+                <form action="{% url 'mehsullar' %}">
+                <select type="select" name="kat" class="card-title form-control ">
+                  <option class="form-control" selected > Hamisi </option>
+                  {% for kati  in kateqoriyalar %}
+                  <option class="form-control"  value="{{kati.ktad}}">{{kati.ktad}}</option>
+                  {% endfor %}
+                
+                </select>
+              </div>
+           
+            
+              
+              <div class="col-lg-4">
+                <button type="submit" style="border-radius: 70px;" class="card-title btn btn-info btn-md">Sech</button>
+              </div>
+            </div>
+          </form>
+               
+              </div>
+              <div class="card-body">
+                <div id="auto" class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Qaime ID
+                      </th>
+                      <th>
+                         Aciqlama
+                      </th>
+                      <th>
+                        Tutar
+                      </th>
+                      <th>
+                        Endrim
+                      </th>
+                      <th>
+                        Status
+                      </th>
+                      <th>
+                        Musteri
+                      </th>
+                      <th >
+                        Tarix
+                      </th>
+                      <th class="text-right">
+                        Son Tarix
+                      </th>
+
+                      
+                    </thead>
+                    <tbody>
+                      {% for qaime in qaimeler %}
+
+                      <tr>
+                        <td>
+                         #{{qaime.id}}
+                        </td>
+                        <td>
+                         {{qaime.aciqlama}}
+                        </td>
+                        <td>
+                          {{qaime.toplam_tutar}} AZN
+                        </td>
+                        <td>
+                          {{qaime.toplam_endrim_aznle}} AZN
+                        </td>
+                        
+                        <td>
+                          {% if qaime.pk|Qaliq == 0  %}
+                         <h6> <span class="badge badge-success">Tamamlandi</span>  </h6>
+                         {% elif qaime.toplam_tutar == qaime.pk|Qaliq   %}
+                         <h6> <span class="badge badge-danger">Odenilmeyib</span>  </h6>
+                         {% elif qaime.pk|Qaliq > 0 %}
+                         <h6> <span class="badge badge-warning">{{qaime.pk|Qaliq}} AZN</span>  </h6>
+                         {% endif %}
+                        </td>
+                         
+                        <td>
+                          {{qaime.musteri}}
+                           </td>
+                        <td>
+                            {{qaime.tarix|timesince}}
+                        </td>
+                        <td class="text-right">
+                          {{qaime.son_odenis_tarixi}}
+                        </td>
+                        
+                      </tr>
+
+                      {% endfor %}
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            {% if qaimeler.has_other_pages %}
+            <nav aria-label="...">
+              <ul class="pagination">
+                {% if qaimeler.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{qaimeler.previous_page_number}}" tabindex="-1">Geri</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">Geri</a>
+                </li>
+                {% endif %}
+                {% for i in qaimeler.paginator.page_range %}
+                {%  if qaimeler.number == i %}
+                <li class="page-item active"><a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}<span class="sr-only">(current)</span></a></li>
+                {% endif %}
+                
+                {% endfor %}
+                {% if qaimeler.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{qaimeler.next_page_number}}" tabindex="-1">İrəli</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">İrəli</a>
+                </li>
+                {% endif %}
+              </ul>
+            </nav>
+            {% endif %}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class=" container-fluid ">
+          <nav>
+            <ul>
+              <li>
+                <a href="https://www.creative-tim.com">
+                  Creative Tim
+                </a>
+              </li>
+              <li>
+                <a href="http://presentation.creative-tim.com">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="http://blog.creative-tim.com">
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright" id="copyright">
+            &copy; <script>
+              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  
+  <script src="{% static 'soft/js/core/popper.min.js' %}"></script>
+  <script src="{% static 'soft/js/core/bootstrap.min.js' %}"></script>
+  <script src="{% static 'soft/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="{% static 'soft/js/plugins/chartjs.min.js' %}"></script>
+  <!--  Notifications Plugin    -->
+  <script src="{% static 'soft/js/plugins/bootstrap-notify.js' %}"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{% static 'soft/js/now-ui-dashboard.min.js' %}" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+  <script src="{% static 'soft/demo/demo.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+
+
+
+
+<div class="modal fade" id="MehsulKad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mehsul kateqoriyasi yarat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'mehsulkatqeyd' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Kateqoriya Adi:</label>
+            <input type="text" class="form-control" name="mehsulkat" id="recipient-name">
+          </div>
+          
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">bagla</button>
+        <button type="submit" class="btn btn-primary">Qeyd et</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+<div class="modal fade" id="vahid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ölçü vahiti yarad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'vahidqeyd' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Vahid Adi:</label>
+            <input type="text" class="form-control" name="vahid" id="recipient-name">
+          </div>
+          
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">bagla</button>
+        <button type="submit" class="btn btn-primary">Qeyd et</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+<!-- Odenis modal-->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+            <h2>Yeni satis</h2>
+            
+           <img style="height: 50px;" src="{% static 'sales/salespage.png' %}" class="img-responsive">
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div style="height: 60px;" class="form-group col-md-12">
+              <label for="inputEmail4">Aciqlama</label>
+              <input type="text" name="aciqlama" id="aciqlama" class="form-control" id="inputEmail4" placeholder="Aciqlama">
+            </div>
+            
+          </div>
+          <div class="form-group">
+          <div class="form-group col-md-12">
+            <label for=select-language>Musteri</label>
+            <select name="musteri" id="select-language"  onchange="console.log(this.value)">
+              <option selected>---------</option>
+              {% for musteri in musteriler %}
+              <option value='{{musteri.id}}'>{{musteri.adsoyad}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+
+          <div class="form-group">
+            <div class="form-group col-md-12">
+            <label for="inputAddress2">Son odeme tarixi</label>
+            <input type="date" class="form-control" name="sontarix" id="sontarix" placeholder="Apartment, studio, or floor">
+          </div>
+        </div>
+          
+         <hr>
+         <div class="table-responsive">
+          <table id="satislar" class="table">
+            <thead>
+              <tr>
+                
+                <th scope="col" class="col">Mehsul Adi</th>
+                <th scope="col" class="col-2">Miqdar</th>
+                <th scope="col" class="col-2">Vahid</th>
+                <th scope="col" class='col-2'> Qiymet </th>
+                <th scope="col" class="col-2">Endrim</th>
+                <th scope="col" class="col-2">Tutar</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <select style="width: 180px;" id="ad" name="ad" class="form-control select2">
+                    <option selected>---------</option>
+                      {% for mehsul in mehsullar %}
+                      <option value="{{mehsul.id}}">{{mehsul.mehsulad}}</option>
+                      {% endfor %}
+                  </select>
+                </td>
+              
+                <td><input type="number" size="0.01" name="miqdar" id="miqdar" value="1" style="width: 80px;"  class="form-control" style="border-radius: 0px;"></td>
+                <td><select name="vhd" id="vhd"  style="width: 80px;"  class="form-control" > <option selected >-------</option> </select></td>
+              
+                <td><input type="number" size="0.01" name="qiymet" id="qiymet" value="0" style="width: 80px;"  class="form-control" style="border-radius: 0px;"></td>
+                 <td><input type="number" size="0.01" name="endrim" id ="endrim" value="0" style="width: 80px;"  class="form-control" style="border-radius: 0px;"></td>
+                <td ><input type="number" size="0.01" style="width: 80px;" name="tutar" id='tutar' value="0" class="form-control" style="border-radius: 0px;"></td>
+                <td><button type="button" name='sat' id = 'sat' class="btn btn-success btn-sm">+</button></td>
+                <td><button type="button" class="btn btn-danger btn-sm">X</button></td>
+
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Bagla</button>
+        <button  type="button" class="btn btn-success" data-toggle="modal" data-target="#modalodenis" data-whatever="@mdo"> Toplam <span id="gosterici" class="badge badge-light"  > </span></button>
+               
+       
+      </div>
+      
+    </form>
+    </div>
+  </div>
+</div>
+
+<!--modal odenis-->
+<!--Modal: Login with Avatar Form-->
+<div class="modal fade" id="modalodenis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+   
+  <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Header-->
+      <div class="modal-header">
+        <img src="{% static 'satisajax/8601.jpg' %}" alt="avatar" class="img-responsive">
+      </div>
+      <!--Body-->
+      <div class="modal-body text-center mb-1">
+
+        <h5  class="mt-1 mb-2"><span id="musterininadi" class="badge badge-primary"></span></h5>
+        
+        <form action="{% url 'satisiyekunlasdir' %}" method="POST">
+          {% csrf_token %}
+
+        <div class="md-form ml-0 mr-0">
+          <input type="hidden"  name="musteriidsi" id="musteriidsi">
+          <input type="text" name="qaimeaciqlama" id="qaimeaciqlama">
+          <input type="text" name="qaimesontarix" id="qaimesontarix">
+          <input type="number" step="0.01" style="height: 40px;" id="mebleg" name="mebleg" class="form-control form-control-sm validate ml-0">
+         <hr>
+          <h3><span id="odenilecekmiqdar" class="badge badge-danger"> </span></h3>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-success mt-1">Yekun <i class="fas fa-sign-in ml-1"></i></button>
+        </div>
+      </form>
+      </div>
+
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Login with Avatar Form-->
+
+
+
+<!-- yekun modal odenis-->
+
+<script type="text/javascript">
+  $(function(){
+
+    $("#ad").change(function(){
+    var mehsulid = $("#ad").val()
+    $.ajax({
+    url: "{% url 'qiymetmehsul' %}",
+    data: { 'csrfmiddlewaretoken': '{{csrf_token}}' ,"mehsulid":mehsulid},
+    
+    type: "POST",
+    success: function(qayidan){
+  
+    $("#qiymet").val(qayidan.qiymeti)
+    $('#tutar').val(qayidan.qiymeti)
+    $('#vhd').children().remove().end()
+    $('#vhd').append($('<option>', {value:qayidan.standart, text:qayidan.standart}));
+    $('#vhd').append($('<option>', {value:qayidan.ikinci, text:qayidan.ikinci}));
+    }
+    });
+
+
+    });
+    });
+</script>
+
+<!-- Vahide gore toplam tutari deyismek -->
+
+<script type="text/javascript">
+  $(function(){
+
+    $("#vhd").change(function(){
+    var mehsulid = $("#ad").val()
+    var vahidim = $('#vhd').val()
+    $.ajax({
+    url: "{% url 'qiymetmehsulikinci' %}",
+    data: { 'csrfmiddlewaretoken': '{{csrf_token}}' ,"mehsulid":mehsulid,"vhd":vahidim},
+    type: "POST",
+    success: function(qayidan){
+      var miqdari = $('#miqdar').val();
+      $("#qiymet").val(qayidan.qiymeti)
+      $('#tutar').val(qayidan.qiymeti*miqdari)
+    }
+    });
+
+
+    });
+    });
+</script>
+
+
+
+<!-- sonu -->
+
+<!-- musteri satsislarinin getiren ajax -->
+<script type="text/javascript">
+  $(function(){
+    
+
+    $("#select-language").change(function(){
+    var musteriid = $("#select-language").val()
+    //musterininadi
+    
+    $.ajax({
+    url: "{% url 'musterisatislar' %}",
+    data: { 'csrfmiddlewaretoken': '{{csrf_token}}' ,"musteriid":musteriid},
+    type: "POST",
+    success: function(qayidan){
+      $('#gosterici').text(qayidan.toplam_mebleg+ " AZN")
+      $('#odenilecekmiqdar').text(qayidan.toplam_mebleg + " AZN")
+      $('#musterininadi').text(qayidan.musteriadi)
+      $('#musteriidsi').val(musteriid)
+
+      var i = 0;
+      for (i;i<qayidan.mehsuladlari.length;i++){
+        $('#satislar').append('<tr><td>'+qayidan.mehsuladlari[i]+'</td><td>'+qayidan.satismiqdarlari[i]+'</td><td>'+qayidan.vahidlerim[i]+'</td><td>'+qayidan.satisqiymetleri[i]+' AZN</td><td>'+qayidan.endrimler[i]+' AZN</td><td>'+(qayidan.satisqiymetleri[i] * qayidan.satismiqdarlari[i])+' AZN</td><td><button class="btn btn-success btn-sm">+</button></td><td><button class="btn btn-danger btn-sm">x</button></td></tr>');
+        
+      }
+      
+     
+    }
+    });
+
+
+    });
+    });
+</script>
+
+
+<!-- musteri satislarini getiren  ajaxin sonu  -->
+<script>
+  $(document).ready(function(){
+    $("#miqdar").keyup(function(){
+      var miqdari = $('#miqdar').val();
+      var qiymeti = $('#qiymet').val(); 
+      $("#tutar").val(miqdari*qiymeti);
+
+
+    });
+  });
+  </script>
+
+<script>
+  $(document).ready(function(){
+    $("#endrim").keyup(function(){
+      var endrim = $('#endrim').val(); 
+      var miqdari = $('#miqdar').val();
+      var qiymeti = $('#qiymet').val(); 
+      $("#tutar").val((miqdari*qiymeti)-endrim);
+    });
+  });
+  </script>
+<script type="text/javascript">
+  $(function(){
+    $('#gosterici').text(0)
+     $('#sat').click(function(){
+      var aciqlama = $('#aciqlama').val()
+      var sontarix = $('#sontarix').val()
+      var mehsulid = $("#ad").val()
+      var musteriid = $('#select-language').val()
+      var miqdar = $('#miqdar').val()
+      var endrim = $('#endrim').val()
+      var vahid = $('#vhd').val()
+      
+          $.ajax({
+          url: "{% url 'satis' %}",
+          data: { 'csrfmiddlewaretoken': '{{csrf_token}}' ,"mehsulid":mehsulid,"musteriid":musteriid,"miqdar":miqdar,"endrim":endrim,"vhd":vahid,'aciqlama':aciqlama,'sontarix':sontarix},
+          type: "POST",
+          success: function(qayidan){
+            if (qayidan.qiymeti == "Bos"){
+              var button3 = document.getElementById('Notibos');
+              button3.click();
+            }
+            else if (qayidan.qiymeti != 0){
+              $('#gosterici').text(qayidan.toplam_mebleg + " AZN")
+              $('#odenilecekmiqdar').text(qayidan.toplam_mebleg + " AZN")
+              $('#qaimeaciqlama').val(aciqlama)
+              $('#qaimesontarix').val(sontarix)
+              var button = document.getElementById('Noti');
+              button.click();
+              $('#satislar').append('<tr><td>'+qayidan.yenimehsuladi+'</td><td>'+qayidan.yenimehsulmiqdar +'</td><td>'+qayidan.yenimehsulvahid+'</td><td>'+ qayidan.yenimehsulqiymeti +' AZN</td><td>'+ qayidan.yenimehsulendrim +' AZN</td><td>'+((qayidan.yenimehsulmiqdar*qayidan.yenimehsulqiymeti)-qayidan.yenimehsulendrim)+' AZN</td><td><button class="btn btn-success btn-sm">+</button></td><td><button class="btn btn-danger btn-sm">x</button></td></tr>');
+              $('#endrim').val(0)
+              
+            }
+            else{
+              var button2 = document.getElementById('Notibad');
+              button2.click();
+            };
+          
+          },
+          
+         
+
+          });
+    });
+});
+
+</script>
+
+<script>
+  new Selector();
+</script>
+
+<script type="text/javascript" src="{% static 'sales/dist/js/multiple-select.js' %}"></script>
+<script type="text/javascript" src="{% static 'sales/dist/js/app.js' %}"></script>
+
+
+
+<div type="hidden" class="col-md-4">
+  <input type="hidden" class="btn btn-primary btn-block"  id ='Noti' onclick="nowuiDashboard.showNotification('bottom','right')">Top Right</input>
+</div>
+<div type="hidden" class="col-md-4">
+  <input type="hidden" class="btn btn-primary btn-block"  id ='Notibad' onclick="nowuiDashboard.showNotificationbad('bottom','right')">Top Right</input>
+</div>
+<div type="hidden" class="col-md-4">
+  <input type="hidden" class="btn btn-primary btn-block"  id ='Notibos' onclick="nowuiDashboard.showNotificationbos('bottom','right')">Top Right</input>
+</div>
+
+
+
+
+
+</body>
+
+</html>

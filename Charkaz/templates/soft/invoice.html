@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+{% load myfilters %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faktura</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href=".{% static 'profile/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'profile/dist/css/adminlte.min.css' %}">
+</head>
+<body>
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="invoice">
+    <!-- title row -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="page-header">
+         <img src="{% static 'soft/img/logom2.png' %}" class="img-responsive" alt="">
+          <small class="float-right">{{qaime.tarix}}</small>
+        </h2>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+      <div class="col-sm-4 invoice-col">
+        From
+        <address>
+          <strong>{{request.user.first_name}} {{request.user.last_name}}</strong><br>
+          795 Folsom Ave, Suite 600<br>
+          San Francisco, CA 94107<br>
+          Phone: (804) 123-5432<br>
+          Email: info@almasaeedstudio.com
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-4 invoice-col">
+        To
+        <address>
+          <strong>{{qaime.musteri}}</strong><br>
+          795 Folsom Ave, Suite 600<br>
+          San Francisco, CA 94107<br>
+          Phone: (555) 539-1037<br>
+          Email: john.doe@example.com
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-4 invoice-col">
+        <b>Invoice #{{qaime.id}}</b><br>
+        <br>
+        <b>Odenis Tarix:</b> {{indi}}<br>
+        <b>Hesab:</b> {{request.user.username}}
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Table row -->
+    <div class="row">
+      <div class="col-12 table-responsive">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Mehsul</th>
+            <th>Miqdar</th>
+            <th>Qiymet</th>
+            <th>Endrim</th>
+            <th>Tutar</th>
+          </tr>
+          </thead>
+          <tbody>
+            {% for satis in satislar %}
+          <tr>
+            <td>{{satis.id}}</td>
+            <td>{{satis.mehsuladi.mehsulad}}</td>
+            <td>{{satis.satissay}} {{satis.vahidi.vahidad}}</td>
+            <td>{{satis.mehsuladi.satisqiymet}} AZN</td>
+            <td>{{satis.endrim}} AZN</td>
+            <td>{{satis.satissay|Tutar:satis.mehsuladi.satisqiymet}} AZN</td>
+          </tr> 
+          {% endfor %}
+     
+          </tbody>
+        </table>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <!-- accepted payments column -->
+      <div class="col-7">
+      
+      </div>
+      <!-- /.col -->
+      <div class="col-5">
+        <p class="lead">Yekun</p>
+
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th style="width:50%">Toplam:</th>
+              <td>{{qaime.toplam_tutar}} AZN</td>
+            </tr>
+            <tr>
+              <th>Endrim(AZN)</th>
+              <td>{{qaime.toplam_endrim_aznle}} AZN</td>
+            </tr>
+            <tr>
+              <th>Odenis:</th>
+              <td>{{qaime.odenis}} AZN</td>
+            </tr>
+            <tr>
+              <tr>
+                <th>Son tarix:</th>
+                <td>{{qaime.son_odenis_tarixi}} AZN</td>
+              </tr>
+              <tr>
+              <th>Qaliq:</th>
+              <td>{{qaime.pk|Qaliq}} AZN</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- ./wrapper -->
+<!-- Page specific script -->
+<script>
+  window.addEventListener("load", window.print());
+</script>
+</body>
+</html>
